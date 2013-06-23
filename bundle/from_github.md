@@ -3,6 +3,7 @@
 * **TComment**:           `git clone http://github.com/tomtom/tcomment_vim.git vim-tcomment`
 * **Tagbar**:             `git clone http://github.com/majutsushi/tagbar.git vim-tagbar`
 * **Bufkill**:            `git clone http://github.com/vim-scripts/bufkill.vim.git vim-bufkill`
+* **VimGit**:             `git clone http://github.com/tpope/vim-git.git vim-git`
 * **Fugitive**:           `git clone http://github.com/tpope/vim-fugitive.git vim-fugitive`
 * **FSwitch**:            `git clone http://github.com/derekwyatt/vim-fswitch.git vim-fswitch`
 * **FuzzyFinder**:        `git clone http://github.com/vim-scripts/FuzzyFinder.git vim-fuzzyfinder`
