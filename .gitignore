@@ -5,6 +5,7 @@ vim-cscope
 vim-fswitch
 vim-fugitive
 vim-fuzzyfinder
+vim-git
 vim-gtags
 vim-gundo
 vim-indexer
