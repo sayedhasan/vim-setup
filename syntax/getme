@@ -1,0 +1,8 @@
+#!/bin/csh -f
+
+wget http://ftp.vim.org/pub/vim/runtime/syntax/git.vim
+wget http://ftp.vim.org/pub/vim/runtime/syntax/gitcommit.vim
+wget http://ftp.vim.org/pub/vim/runtime/syntax/gitconfig.vim
+wget http://ftp.vim.org/pub/vim/runtime/syntax/gitrebase.vim
+wget http://ftp.vim.org/pub/vim/runtime/syntax/gitsendemail.vim
+
