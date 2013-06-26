@@ -26,3 +26,4 @@
 * **Project**:            `git clone http://github.com/shemerey/vim-project.git vim-project`
 * **Matlab**:             `git clone http://github.com/vim-scripts/MatlabFilesEdition.git vim-matlab`
 * **CommandT**:           `git clone http://github.com/wincent/Command-T.git vim-commandt`
+* **Perl**:               `git clone http://github.com/vim-scripts/perl-support.vim.git vim-perl`
