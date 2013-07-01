@@ -1,3 +1,5 @@
+usage.txt
+**/usage.txt
 bundle/vim-*
 *.swp
 .netrwhist
