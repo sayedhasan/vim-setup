@@ -21,8 +21,25 @@ else
   set shell=ksh
 endif
 
-set guifont=Inconsolata\ 16
-colorscheme xoria256
+" Set colorscheme and font
+if has("gui_gtk2")
+  set guifont=Inconsolata\ 14
+elseif has("gui_macvim")
+  set guifont=Inconsolata:h12
+elseif has("gui_win32")
+  set guifont=Inconsolata:h11
+end
+" set guifont=Inconsolata\ 14
+" colorscheme developer
+" colorscheme lightcolors
+" colorscheme moria
+colorscheme silent
+" colorscheme earendel
+" colorscheme xoria256
+" colorscheme morning
+" autocmd VimLeave * :set term=screen
+
+" Some window sizing
 nmap <silent> ,f1 :winpos 0 0<cr>:winsize 270 68<cr>
 nmap <silent> ,f2 :winpos 0 0<cr>:winsize 135 68<cr>
 nmap <silent> ,f3 :winpos 0 0<cr>:winsize 179 41<cr>
@@ -62,8 +79,8 @@ set guioptions=acg
 set timeoutlen=500
 set history=100
 set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
-set timeoutlen=500
 set wildmenu
+set wildmode=list:longest
 set complete=.,w,b,t
 set showfulltag
 set textwidth=120
@@ -75,8 +92,12 @@ set autoread
 set grepprg=grep\ -nH\ $*
 set diffopt+=iwhite
 set number
-set encoding=utf8
-
+set encoding=utf-8
+set scrolloff=3
+set ttyfast
+set ruler
+set undofile
+set laststatus=2
 
 " Switch on syntax highlighting.
 syntax on
@@ -214,7 +235,7 @@ function! ClearText(type, ...)
 endfunction
 
 " Syntax coloring lines that are too long just slows down the world
-set synmaxcol=2048
+set synmaxcol=1024
 
 " Initial path seeding
 set path=
@@ -371,86 +392,86 @@ endfunction
 :nmap ,ha :call HighlightAllOfWord(1)<cr>
 :nmap ,hA :call HighlightAllOfWord(0)<cr>
 
-function! LengthenCWD()
-	let cwd = getcwd()
-    if cwd == '/'
-        return
-    endif
-	let lengthend = substitute(cwd, '/[^/]*$', '', '')
-    if lengthend == ''
-        let lengthend = '/'
-    endif
-    if cwd != lengthend
-	    exec ":lcd " . lengthend
-	endif
-endfunction
+" function! LengthenCWD()
+" 	let cwd = getcwd()
+"     if cwd == '/'
+"         return
+"     endif
+" 	let lengthend = substitute(cwd, '/[^/]*$', '', '')
+"     if lengthend == ''
+"         let lengthend = '/'
+"     endif
+"     if cwd != lengthend
+" 	    exec ":lcd " . lengthend
+" 	endif
+" endfunction
+" 
+" :nmap ,ld :call LengthenCWD()<cr>
+" 
+" function! ShortenCWD()
+" 	let cwd = split(getcwd(), '/')
+" 	let filedir = split(expand("%:p:h"), '/')
+"     let i = 0
+"     let newdir = ""
+"     while i < len(filedir)
+"         let newdir = newdir . "/" . filedir[i]
+"         if len(cwd) == i || filedir[i] != cwd[i]
+"             break
+"         endif
+"         let i = i + 1
+"     endwhile
+"     exec ":lcd /" . newdir
+" endfunction
+" 
+" :nmap ,sd :call ShortenCWD()<cr>
+" 
+" function! RedirToYankRegisterF(cmd, ...)
+"     let cmd = a:cmd . " " . join(a:000, " ")
+"     redir @*>2048
+"     exe cmd
+"     redir END
+" endfunction
+" 
+" command! -complete=command -nargs=+ RedirToYankRegister 
+"   \ silent! call RedirToYankRegisterF(<f-args>)
+" 
+" function! ToggleMinimap()
+"     if exists("s:isMini") && s:isMini == 0
+"         let s:isMini = 1
+"     else
+"         let s:isMini = 0
+"     end
+" 
+"     if (s:isMini == 0)
+"         " save current visible lines
+"         let s:firstLine = line("w0")
+"         let s:lastLine = line("w$")
+" 
+"         " make font small
+"         exe "set guifont=" . g:small_font
+"         " highlight lines which were visible
+"         let s:lines = ""
+"         for i in range(s:firstLine, s:lastLine)
+"             let s:lines = s:lines . "\\%" . i . "l"
+" 
+"             if i < s:lastLine
+"                 let s:lines = s:lines . "\\|"
+"             endif
+"         endfor
+" 
+"         exe 'match Visible /' . s:lines . '/'
+"         hi Visible guibg=lightblue guifg=black term=bold
+"         nmap <s-j> 10j
+"         nmap <s-k> 10k
+"     else
+"         exe "set guifont=" . g:main_font
+"         hi clear Visible
+"         nunmap <s-j>
+"         nunmap <s-k>
+"     endif
+" endfunction
 
-:nmap ,ld :call LengthenCWD()<cr>
-
-function! ShortenCWD()
-	let cwd = split(getcwd(), '/')
-	let filedir = split(expand("%:p:h"), '/')
-    let i = 0
-    let newdir = ""
-    while i < len(filedir)
-        let newdir = newdir . "/" . filedir[i]
-        if len(cwd) == i || filedir[i] != cwd[i]
-            break
-        endif
-        let i = i + 1
-    endwhile
-    exec ":lcd /" . newdir
-endfunction
-
-:nmap ,sd :call ShortenCWD()<cr>
-
-function! RedirToYankRegisterF(cmd, ...)
-    let cmd = a:cmd . " " . join(a:000, " ")
-    redir @*>
-    exe cmd
-    redir END
-endfunction
-
-command! -complete=command -nargs=+ RedirToYankRegister 
-  \ silent! call RedirToYankRegisterF(<f-args>)
-
-function! ToggleMinimap()
-    if exists("s:isMini") && s:isMini == 0
-        let s:isMini = 1
-    else
-        let s:isMini = 0
-    end
-
-    if (s:isMini == 0)
-        " save current visible lines
-        let s:firstLine = line("w0")
-        let s:lastLine = line("w$")
-
-        " make font small
-        exe "set guifont=" . g:small_font
-        " highlight lines which were visible
-        let s:lines = ""
-        for i in range(s:firstLine, s:lastLine)
-            let s:lines = s:lines . "\\%" . i . "l"
-
-            if i < s:lastLine
-                let s:lines = s:lines . "\\|"
-            endif
-        endfor
-
-        exe 'match Visible /' . s:lines . '/'
-        hi Visible guibg=lightblue guifg=black term=bold
-        nmap <s-j> 10j
-        nmap <s-k> 10k
-    else
-        exe "set guifont=" . g:main_font
-        hi clear Visible
-        nunmap <s-j>
-        nunmap <s-k>
-    endif
-endfunction
-
-command! ToggleMinimap call ToggleMinimap()
+" command! ToggleMinimap call ToggleMinimap()
 
 " I /literally/ never use this and it's pissing me off
 " nnoremap <space> :ToggleMinimap<CR>
@@ -458,24 +479,24 @@ command! ToggleMinimap call ToggleMinimap()
 "-----------------------------------------------------------------------------
 " Commands
 "-----------------------------------------------------------------------------
-function! FreemindToListF()
-    setl filetype=
-    silent! :%s/^\(\s*\).*TEXT="\([^"]*\)".*$/\1- \2/
-    silent! :g/^\s*</d
-    silent! :%s/&quot;/"/g
-    silent! :%s/&apos;/\'/g
-    silent! g/^-/s/- //
-    silent! g/^\w/t.|s/./=/g
-    silent! g/^\s*-/normal O
-    silent! normal 3GgqG
-    silent! %s/^\s\{4}\zs-/o/
-    silent! %s/^\s\{12}\zs-/+/
-    silent! %s/^\s\{16}\zs-/*/
-    silent! %s/^\s\{20}\zs-/#/
-    silent! normal gg
-endfunction
-
-command! FreemindToList call FreemindToListF()
+" function! FreemindToListF()
+"     setl filetype=
+"     silent! :%s/^\(\s*\).*TEXT="\([^"]*\)".*$/\1- \2/
+"     silent! :g/^\s*</d
+"     silent! :%s/&quot;/"/g
+"     silent! :%s/&apos;/\'/g
+"     silent! g/^-/s/- //
+"     silent! g/^\w/t.|s/./=/g
+"     silent! g/^\s*-/normal O
+"     silent! normal 3GgqG
+"     silent! %s/^\s\{4}\zs-/o/
+"     silent! %s/^\s\{12}\zs-/+/
+"     silent! %s/^\s\{16}\zs-/*/
+"     silent! %s/^\s\{20}\zs-/#/
+"     silent! normal gg
+" endfunction
+" 
+" command! FreemindToList call FreemindToListF()
 
 "-----------------------------------------------------------------------------
 " Auto commands
@@ -564,62 +585,13 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 " saving macros
 let @a = ':%s/ //gggvG'
-"let @h = ':tabnew out.highyG:tabnewp:tabnewpgTgT:bd:v/NMOS_nmos_gate     /dggddgt:v/NMOS_nmos_drain     /dggddgT'
-"let @l = ':tabnew out.loyG:tabnewp:tabnewpgTgT:bd:v/NMOS_nmos_gate     /dggddgt:v/NMOS_nmos_drain     /dggddgT'
 
-
-" winpos 0 0
-" winpos 952 0
-" winpos 0 0
-" set guifont=Inconsolata\ 14
-" " set guifont=Inconsolata\ 12
-" "set lines=40 columns=100
-" colorscheme xoria256
+" fold stuff
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=1
 
 nmap <silent> ,src :set lines=42 columns=158<CR>
 nmap <silent> ,srr :set lines=42<CR>
 nmap <silent> ,scc :set columns=158<CR>
-" winpos 952 0
-" winpos 0 0
-" winsize 119 69
-
-" winsize 238 69
-
-          " set lines=53 columns=153
-          " winsize 238 69
-          " winsize 119 69
-          " winsize 85 42
-          "winsize 158 42
-
-          " set guifont=Courier\ New\ 13
-          " set guifont=Luxi\ Mono\ 12
-          " winpos 0 0
-
-          " "-----------------------------------------------------------------------------
-          " " Set up the window colors and size
-          " "-----------------------------------------------------------------------------
-          " if has("gui_running")
-          " "  exe "set guifont=" . g:main_font
-          " "  exe "set guifont=Inconsolata \ 14
-          "   if hostname() == "dqw-linux"
-          "     set background=light
-          "   else
-          "     set background=dark
-          "   endif
-          " "  colorscheme solarized
-          "   " colorscheme xoria256 
-          "   colorscheme ex
-          "   if !exists("g:vimrcloaded")
-          "       winpos 0 0
-          "       if !&diff
-          "         winsize 158 42
-          "           " winsize 130 120
-          "       else
-          "         winsize 158 42
-          "           " winsize 227 120
-          "       endif
-          "       let g:vimrcloaded = 1
-          "   endif
-          " endif
-          " :nohls
-          " 
