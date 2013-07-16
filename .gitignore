@@ -1,6 +1,8 @@
+*~
+**/*~
+*.swp
 usage.txt
 **/usage.txt
-bundle/vim-*
-*.swp
-.netrwhist
 passwords.vim
+.netrwhist
+bundle/vim-*
