@@ -29,3 +29,4 @@
 * **Perl**:               `git clone http://github.com/vim-scripts/perl-support.vim.git vim-perl`
 * **Railscasts**:         `git clone http://github.com/jpo/vim-railscasts-theme.git vim-railscasts`
 * **Colorschemes**:       `git clone http://github.com/flazz/vim-colorschemes.git vim-colorschemes`
+* **Rename**:             `git clone http://github.com/danro/rename.vim.git vim-rename`
