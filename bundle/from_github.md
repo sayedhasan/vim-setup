@@ -22,7 +22,6 @@
 * **SBT**:                `git clone http://github.com/derekwyatt/vim-sbt.git vim-sbt`
 * **VimLatex**:           `git clone http://github.com/jcf/vim-latex.git vim-latex`
 * **CScope**:             `git clone http://github.com/portante/cscope.git vim-cscope`
-* **Indexer**:            `git clone http://github.com/shemerey/vim-indexer.git vim-indexer`
 * **Project**:            `git clone http://github.com/shemerey/vim-project.git vim-project`
 * **Matlab**:             `git clone http://github.com/vim-scripts/MatlabFilesEdition.git vim-matlab`
 * **CommandT**:           `git clone http://github.com/wincent/Command-T.git vim-commandt`

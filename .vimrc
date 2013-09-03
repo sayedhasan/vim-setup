@@ -22,7 +22,9 @@ else
 endif
 
 set guifont=Inconsolata\ 16
-colorscheme xoria256
+" colorscheme xoria256
+colorscheme dual
+
 nmap <silent> ,f1 :winpos 0 0<cr>:winsize 270 68<cr>
 nmap <silent> ,f2 :winpos 0 0<cr>:winsize 135 68<cr>
 nmap <silent> ,f3 :winpos 0 0<cr>:winsize 179 41<cr>
@@ -76,7 +78,7 @@ set grepprg=grep\ -nH\ $*
 set diffopt+=iwhite
 set number
 set encoding=utf8
-
+set autochdir
 
 " Switch on syntax highlighting.
 syntax on
@@ -582,7 +584,18 @@ nmap <silent> ,srr :set lines=42<CR>
 nmap <silent> ,scc :set columns=158<CR>
 nmap <silent> <F5> :!%<CR>
 imap <silent> <F5> <ESC>:w<CR>:!%<CR>
+
+
+" perl related settings
+let perl_include = 1
+let perl_extended_vars = 1
+let perl_want_scope_in_variables = 1
+let perl_fold = 1
+let perl_fold_blocks = 1
+
+autocmd Filetype perl :set equalprg=perltidy
 nmap <silent> ,p ggO#!/usr/intel/pkgs/perl/5.8.5/bin/perl<CR><CR>use strict;<CR>use warnings;<CR><CR><ESC><C-V>4kx6Gdd:w<CR>:!chmod 755 %<CR>:e<CR>
+
 
 
 " winpos 952 0
