@@ -21,9 +21,12 @@ else
   set shell=ksh
 endif
 
-set guifont=Inconsolata\ 16
+" set guifont=Inconsolata\ 16
 " colorscheme xoria256
-colorscheme dual
+" colorscheme dual
+colorscheme visualstudio
+" set guifont=Consolas\ for\ Powerline\ 16
+
 
 nmap <silent> ,f1 :winpos 0 0<cr>:winsize 270 68<cr>
 nmap <silent> ,f2 :winpos 0 0<cr>:winsize 135 68<cr>
@@ -593,8 +596,9 @@ let perl_want_scope_in_variables = 1
 let perl_fold = 1
 let perl_fold_blocks = 1
 
-autocmd Filetype perl :set equalprg=perltidy
-nmap <silent> ,p ggO#!/usr/intel/pkgs/perl/5.8.5/bin/perl<CR><CR>use strict;<CR>use warnings;<CR><CR><ESC><C-V>4kx6Gdd:w<CR>:!chmod 755 %<CR>:e<CR>
+autocmd Filetype perl :set equalprg=perltidy\ -i=2\ -nt\ -msc=2\ -ci=2\ -dsm\ -asc\ -lp\ -l=110\ -isbc\ -dws\ -w
+" nmap <silent> ,p ggO#!/usr/intel/pkgs/perl/5.8.5/bin/perl<CR><CR>use strict;<CR>use warnings;<CR><CR><ESC><C-V>4kx6Gdd:w<CR>:!chmod 755 %<CR>:e<CR>
+nmap <silent> ,p ggO#!/usr/intel/pkgs/perl/5.14.1/bin/perl<CR><CR>use strict;<CR>use warnings;<CR><CR><ESC><C-V>4kx6Gdd:w<CR>:!chmod u+x %<CR>:e<CR>
 
 
 
