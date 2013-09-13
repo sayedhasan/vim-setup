@@ -1,6 +1,12 @@
 #!/bin/csh -f
 
-mkdir -p ~/.fonts
-cp $1 ~/.fonts/
+set script_dir = `dirname $0`
+mkdir -p $HOME/.fonts
+cd $script_dir
+set dirs = `ls -d */`
+foreach i ($dirs) 
+  cp $i/* $HOME/.fonts/
+end
+cd $HOME/
 fc-cache
 mkfontdir
