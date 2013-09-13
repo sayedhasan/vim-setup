@@ -30,3 +30,6 @@
 * **Colorschemes**:       `git clone http://github.com/flazz/vim-colorschemes.git vim-colorschemes`
 * **Rename**:             `git clone http://github.com/danro/rename.vim.git vim-rename`
 * **Vimana**:             `git clone http://github.com/NewAlexandria/vim.ana.git vim-ana`
+* **NeatStatus**:         `git clone http://github.com/maciakl/vim-neatstatus.git vim-neatstatus` 
+* **Misc**:               `git clone http://github.com/xolox/vim-misc.git vim-misc` 
+* **Notes**:              `git clone http://github.com/xolox/vim-notes.git vim-notes` 

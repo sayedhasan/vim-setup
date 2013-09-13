@@ -25,7 +25,8 @@ endif
 " colorscheme xoria256
 " colorscheme dual
 colorscheme visualstudio
-" set guifont=Consolas\ for\ Powerline\ 16
+" colorscheme slate
+" set guifont=Consolata\ for\ Powerline\ 16
 
 
 nmap <silent> ,f1 :winpos 0 0<cr>:winsize 270 68<cr>
@@ -195,29 +196,6 @@ nnoremap <C-E> ,
 " Make the current file executable
 nmap ,x :w<cr>:!chmod 755 %<cr>:e<cr>
 
-" " Digraphs
-" " Alpha <c-k>a*
-" " Beta <c-k>b*
- 
-function! ClearText(type, ...)
-  let sel_save = &selection
-  let &selection = "inclusive"
-  let reg_save = @@
-  if a:0 " Invoked from Visual mode, use '< and '> marks
-    silent exe "normal! '<" . a:type . "'>r w"
-  elseif a:type == 'line'
-    silent exe "normal! '[V']r w"
-  elseif a:type == 'line'
-    silent exe "normal! '[V']r w"
-    elseif a:type == 'block'
-      silent exe "normal! `[\<C-V>`]r w"
-    else
-      silent exe "normal! `[v`]r w"
-    endif
-    let &selection = sel_save
-    let @@ = reg_save
-endfunction
-
 " Syntax coloring lines that are too long just slows down the world
 set synmaxcol=2048
 
@@ -235,7 +213,7 @@ nmap <F7> :NERDTreeToggle<CR>
 nmap <S-F7> :NERDTreeClose<CR>
 
 " Show the bookmarks table on startup
-let NERDTreeShowBookmarks=1
+" let NERDTreeShowBookmarks=0
 
 " " Don't display these kinds of files
 " let NERDTreeIgnore=[ '\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
@@ -494,6 +472,7 @@ augroup Binary
   au BufNewFile,BufRead   *.m set filetype=matlab
   au BufNewFile,BufRead *.inc set filetype=make
   au BufNewFile,BufRead *.dat set filetype=perl 
+  " au BufNewFile,BufRead *.txt colorscheme slate 
 augroup END
 
 autocmd BufEnter *.m compiler mlint
@@ -587,6 +566,9 @@ nmap <silent> ,srr :set lines=42<CR>
 nmap <silent> ,scc :set columns=158<CR>
 nmap <silent> <F5> :!%<CR>
 imap <silent> <F5> <ESC>:w<CR>:!%<CR>
+nmap <silent> <F6> !!!<CR>
+imap <silent> <F6> <ESC>!!!<CR>
+
 
 
 " perl related settings
@@ -599,50 +581,3 @@ let perl_fold_blocks = 1
 autocmd Filetype perl :set equalprg=perltidy\ -i=2\ -nt\ -msc=2\ -ci=2\ -dsm\ -asc\ -lp\ -l=110\ -isbc\ -dws\ -w
 " nmap <silent> ,p ggO#!/usr/intel/pkgs/perl/5.8.5/bin/perl<CR><CR>use strict;<CR>use warnings;<CR><CR><ESC><C-V>4kx6Gdd:w<CR>:!chmod 755 %<CR>:e<CR>
 nmap <silent> ,p ggO#!/usr/intel/pkgs/perl/5.14.1/bin/perl<CR><CR>use strict;<CR>use warnings;<CR><CR><ESC><C-V>4kx6Gdd:w<CR>:!chmod u+x %<CR>:e<CR>
-
-
-
-" winpos 952 0
-" winpos 0 0
-" winsize 119 69
-
-" winsize 238 69
-
-          " set lines=53 columns=153
-          " winsize 238 69
-          " winsize 119 69
-          " winsize 85 42
-          "winsize 158 42
-
-          " set guifont=Courier\ New\ 13
-          " set guifont=Luxi\ Mono\ 12
-          " winpos 0 0
-
-          " "-----------------------------------------------------------------------------
-          " " Set up the window colors and size
-          " "-----------------------------------------------------------------------------
-          " if has("gui_running")
-          " "  exe "set guifont=" . g:main_font
-          " "  exe "set guifont=Inconsolata \ 14
-          "   if hostname() == "dqw-linux"
-          "     set background=light
-          "   else
-          "     set background=dark
-          "   endif
-          " "  colorscheme solarized
-          "   " colorscheme xoria256 
-          "   colorscheme ex
-          "   if !exists("g:vimrcloaded")
-          "       winpos 0 0
-          "       if !&diff
-          "         winsize 158 42
-          "           " winsize 130 120
-          "       else
-          "         winsize 158 42
-          "           " winsize 227 120
-          "       endif
-          "       let g:vimrcloaded = 1
-          "   endif
-          " endif
-          " :nohls
-          " 
