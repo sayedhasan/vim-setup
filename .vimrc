@@ -26,7 +26,7 @@ endif
 " colorscheme dual
 colorscheme visualstudio
 " colorscheme slate
-" set guifont=Consolata\ for\ Powerline\ 16
+set guifont=Consolas\ for\ Powerline\ FixedD\ 16
 
 
 nmap <silent> ,f1 :winpos 0 0<cr>:winsize 270 68<cr>
