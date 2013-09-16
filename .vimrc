@@ -21,23 +21,8 @@ else
   set shell=ksh
 endif
 
-" set guifont=Inconsolata\ 16
-" colorscheme xoria256
-" colorscheme dual
 colorscheme visualstudio
-" colorscheme slate
 set guifont=Consolas\ for\ Powerline\ FixedD\ 16
-
-
-nmap <silent> ,f1 :winpos 0 0<cr>:winsize 270 68<cr>
-nmap <silent> ,f2 :winpos 0 0<cr>:winsize 135 68<cr>
-nmap <silent> ,f3 :winpos 0 0<cr>:winsize 179 41<cr>
-nmap <silent> ,f4 :winpos 0 0<cr>:winsize 89 41<cr>
-nmap <silent> ,f5 :winpos 476 0<cr>:winsize 135 68<cr>
-
-nmap <silent> ,p1 :winpos 0 0<cr>
-nmap <silent> ,p2 :winpos 476 0<cr>
-nmap <silent> ,p3 :winpos 1428 0<cr>
 
 " Set filetype stuff to on
 filetype on
@@ -64,7 +49,7 @@ set showcmd
 set showmode
 set mousehide  " Hide the mouse pointer while typing
 set showmatch  " Show the matching parentheses
-set guioptions=acg
+" set guioptions=acg
 set timeoutlen=500
 set history=100
 set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
@@ -244,8 +229,8 @@ let g:fuf_splitPathMatching = 0
 let g:fuf_maxMenuWidth = 110
 let g:fuf_timeFormat = ''
 nmap <silent> ,fv :FufFile ~/.vim/<cr>
-nmap <silent> ,fc :FufMruCmd<cr>
-nmap <silent> ,fm :FufMruFile<cr>
+" nmap <silent> ,fc :FufMruCmd<cr>
+" nmap <silent> ,fm :FufMruFile<cr>
 
 
 "-----------------------------------------------------------------------------
@@ -472,6 +457,7 @@ augroup Binary
   au BufNewFile,BufRead   *.m set filetype=matlab
   au BufNewFile,BufRead *.inc set filetype=make
   au BufNewFile,BufRead *.dat set filetype=perl 
+  au BufNewFile,BufRead zirconQA set fdm=marker
   " au BufNewFile,BufRead *.txt colorscheme slate 
 augroup END
 
@@ -523,43 +509,8 @@ iab teh        the
 set viminfo='10,\"100,:20,%,n~/.viminfo
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
  
-" let g:clang_auto_select=1
-" " let g:clang_complete_auto=0
-" let g:clang_complete_copen=1
-" let g:clang_hl_errors=1
-" let g:clang_periodic_quickfix=0
-" let g:clang_snippets=1
-" let g:clang_snippets_engine="clang_complete"
-" let g:clang_conceal_snippets=1
-" let g:clang_exec="clang"
-" let g:clang_user_options=""
-" let g:clang_auto_user_options="path, .clang_complete"
-" let g:clang_use_library=1
-" let g:clang_library_path="/nfs/pdx/disks/tcad_ptm_pdmg_work_04/usr/shasan/d58/6.local_builds/llvm/lib/libclang.so"
-" let g:clang_sort_algo="priority"
-" let g:clang_complete_macros=1
-" let g:clang_complete_patterns=0
-" nnoremap <Leader>q :call g:ClangUpdateQuickFix()<CR>
-" 
-" let g:clic_filename="/tmp/shasan/mds/project-index/index.db"
-" nnoremap <Leader>r :call ClangGetReferences()<CR>
-" nnoremap <Leader>d :call ClangGetDeclarations()<CR>
-" nnoremap <Leader>s :call ClangGetSubclasses()<CR>
-
-
 " saving macros
 let @a = ':%s/ //gggvG'
-"let @h = ':tabnew out.highyG:tabnewp:tabnewpgTgT:bd:v/NMOS_nmos_gate     /dggddgt:v/NMOS_nmos_drain     /dggddgT'
-"let @l = ':tabnew out.loyG:tabnewp:tabnewpgTgT:bd:v/NMOS_nmos_gate     /dggddgt:v/NMOS_nmos_drain     /dggddgT'
-
-
-" winpos 0 0
-" winpos 952 0
-" winpos 0 0
-" set guifont=Inconsolata\ 14
-" " set guifont=Inconsolata\ 12
-" "set lines=40 columns=100
-" colorscheme xoria256
 
 nmap <silent> ,src :set lines=42 columns=158<CR>
 nmap <silent> ,srr :set lines=42<CR>
@@ -568,7 +519,6 @@ nmap <silent> <F5> :!%<CR>
 imap <silent> <F5> <ESC>:w<CR>:!%<CR>
 nmap <silent> <F6> !!!<CR>
 imap <silent> <F6> <ESC>!!!<CR>
-
 
 
 " perl related settings
@@ -581,3 +531,20 @@ let perl_fold_blocks = 1
 autocmd Filetype perl :set equalprg=perltidy\ -i=2\ -nt\ -msc=2\ -ci=2\ -dsm\ -asc\ -lp\ -l=110\ -isbc\ -dws\ -w
 " nmap <silent> ,p ggO#!/usr/intel/pkgs/perl/5.8.5/bin/perl<CR><CR>use strict;<CR>use warnings;<CR><CR><ESC><C-V>4kx6Gdd:w<CR>:!chmod 755 %<CR>:e<CR>
 nmap <silent> ,p ggO#!/usr/intel/pkgs/perl/5.14.1/bin/perl<CR><CR>use strict;<CR>use warnings;<CR><CR><ESC><C-V>4kx6Gdd:w<CR>:!chmod u+x %<CR>:e<CR>
+
+" folding stuff
+inoremap <F9> <C-O>za
+nnoremap <F9> za
+onoremap <F9> <C-C>za
+vnoremap <F9> zf
+
+" shortcut to bright colorschemes
+nmap <silent> <C-S-F1> :colorscheme visualstudio<CR> 
+nmap <silent> <C-S-F3> :colorscheme dual<CR>
+nmap <silent> <C-S-F5> :colorscheme emacs<CR>
+nmap <silent> <C-S-F7> :colorscheme default<CR>
+
+" shortcut to mte colorschemes
+nmap <silent> <C-S-F2> :colorscheme slate<CR>
+nmap <silent> <C-S-F4> :colorscheme xoria256<CR>
+nmap <silent> <C-S-F6> :colorscheme mustang<CR>
