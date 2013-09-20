@@ -517,9 +517,7 @@ nmap <silent> ,srr :set lines=42<CR>
 nmap <silent> ,scc :set columns=158<CR>
 nmap <silent> <F5> :!%<CR>
 imap <silent> <F5> <ESC>:w<CR>:!%<CR>
-nmap <silent> <F6> !!!<CR>
-imap <silent> <F6> <ESC>!!!<CR>
-
+nmap <silent> <F6> :!perl -d:ptkdb %&<CR>
 
 " perl related settings
 let perl_include = 1
@@ -529,8 +527,8 @@ let perl_fold = 1
 let perl_fold_blocks = 1
 
 autocmd Filetype perl :set equalprg=perltidy\ -i=2\ -nt\ -msc=2\ -ci=2\ -dsm\ -asc\ -lp\ -l=110\ -isbc\ -dws\ -w
-" nmap <silent> ,p ggO#!/usr/intel/pkgs/perl/5.8.5/bin/perl<CR><CR>use strict;<CR>use warnings;<CR><CR><ESC><C-V>4kx6Gdd:w<CR>:!chmod 755 %<CR>:e<CR>
-nmap <silent> ,p ggO#!/usr/intel/pkgs/perl/5.14.1/bin/perl<CR><CR>use strict;<CR>use warnings;<CR><CR><ESC><C-V>4kx6Gdd:w<CR>:!chmod u+x %<CR>:e<CR>
+nmap <silent> ,p ggO#!/usr/intel/pkgs/perl/5.8.5/bin/perl<CR><CR>use strict;<CR>use warnings;<CR><CR><ESC><C-V>4kx6Gdd:w<CR>:!chmod 755 %<CR>:e<CR>
+" nmap <silent> ,p ggO#!/usr/intel/pkgs/perl/5.14.1/bin/perl<CR><CR>use strict;<CR>use warnings;<CR><CR><ESC><C-V>4kx6Gdd:w<CR>:!chmod u+x %<CR>:e<CR>
 
 " folding stuff
 inoremap <F9> <C-O>za
