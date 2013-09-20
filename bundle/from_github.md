@@ -8,6 +8,7 @@
 * **FSwitch**:            `git clone http://github.com/derekwyatt/vim-fswitch.git vim-fswitch`
 * **FuzzyFinder**:        `git clone http://github.com/vim-scripts/FuzzyFinder.git vim-fuzzyfinder`
 * **Solarized**:          `git clone http://github.com/altercation/vim-colors-solarized.git vim-solarized`
+* **L9**:                 `git clone http://github.com/vim-scripts/L9.git vim-l9`
 * **NERDTree**:           `git clone http://github.com/scrooloose/nerdtree.git vim-nerdtree`
 * **Gundo**:              `git clone http://github.com/sjl/gundo.vim.git vim-gundo`
 * **VimLatex**:           `git clone http://github.com/jcf/vim-latex.git vim-latex`
