@@ -22,6 +22,8 @@ else
 endif
 
 colorscheme visualstudio
+" set guifont=Inconsolata\ 14
+" set guifont=Consolas\ for\ Powerline\ FixedD\ 14
 set guifont=Consolas\ for\ Powerline\ FixedD\ 16
 
 " Set filetype stuff to on
@@ -35,7 +37,8 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 set autoindent
-set backspace=2  " Allow backspacing over indent, eol, and the start of an insert
+" set backspace=2  " Allow backspacing over indent, eol, and the start of an insert
+set backspace=eol,start,indent
 set printoptions=header:0,duplex:long,paper:letter  " Printing options
 set wrapscan  " set the search scan to wrap lines
 set noignorecase
@@ -68,6 +71,9 @@ set diffopt+=iwhite
 set number
 set encoding=utf8
 set autochdir
+set ffs=unix,dos,mac
+set magic    " magic regular expression
+
 
 " Switch on syntax highlighting.
 syntax on
@@ -523,8 +529,8 @@ nmap <silent> <F6> :!perl -d:ptkdb %&<CR>
 let perl_include = 1
 let perl_extended_vars = 1
 let perl_want_scope_in_variables = 1
-let perl_fold = 1
-let perl_fold_blocks = 1
+" let perl_fold = 1
+" let perl_fold_blocks = 1
 
 autocmd Filetype perl :set equalprg=perltidy\ -i=2\ -nt\ -msc=2\ -ci=2\ -dsm\ -asc\ -lp\ -l=110\ -isbc\ -dws\ -w
 nmap <silent> ,p ggO#!/usr/intel/pkgs/perl/5.8.5/bin/perl<CR><CR>use strict;<CR>use warnings;<CR><CR><ESC><C-V>4kx6Gdd:w<CR>:!chmod 755 %<CR>:e<CR>
