@@ -37,8 +37,8 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 set autoindent
-" set backspace=2  " Allow backspacing over indent, eol, and the start of an insert
-set backspace=eol,start,indent
+set backspace=2  " Allow backspacing over indent, eol, and the start of an insert
+" set backspace=eol,start,indent
 set printoptions=header:0,duplex:long,paper:letter  " Printing options
 set wrapscan  " set the search scan to wrap lines
 set noignorecase
