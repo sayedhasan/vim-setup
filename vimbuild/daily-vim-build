@@ -1,0 +1,22 @@
+#!/bin/csh -fx
+
+#--- configure the /tmp/$USER installation area.
+#    /tmp/$USER installation is done for faster 
+#    load time and to prevent from ocassional nfs
+#    outage. 
+#
+rm -rf /tmp/$USER/vim74
+cp -f $HOME/usr/pkgs/vim/vim.latest.tar.bz2 /tmp/$USER/
+cp -f $HOME/usr/pkgs/vim/7.4/installation/daily-build-config.csh /tmp/$USER/
+
+cd /tmp/$USER
+mkdir -p /tmp/$USER/vim/7.4
+tar xvfj vim.latest.tar.bz2
+cd vim.latest/src
+/tmp/$USER/daily-build-config.csh
+gmake -j12
+
+
+rm -rf /tmp/$USER/vim 
+mkdir -p /tmp/$USER/vim/7.4
+gmake install

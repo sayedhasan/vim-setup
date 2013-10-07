@@ -19,3 +19,6 @@
 * **Vimana**:             `git clone http://github.com/NewAlexandria/vim.ana.git vim-ana`
 * **NeatStatus**:         `git clone http://github.com/maciakl/vim-neatstatus.git vim-neatstatus` 
 * **FontSize**:           `git clone http://github.com/drmikehenry/vim-fontsize.git vim-fontsize`
+* **Surround**:           `git clone http://github.com/tpope/vim-surround.git vim-surround`
+* **Ctrlp**:              `git clone http://github.com/kien/ctrlp.vim.git vim-ctrlp`
+* **SnipMate**:           `git clone http://github.com/msanders/snipmate.vim.git vim-snipmate`
