@@ -185,7 +185,7 @@ nmap ,bd :BD<cr>
 nnoremap <C-E> ,
 
 " Make the current file executable
-nmap ,x :w<cr>:!chmod 755 %<cr>:e<cr>
+nmap ,x :w<cr>:!chmod 755 %:p<cr>:e<cr>
 
 " Syntax coloring lines that are too long just slows down the world
 set synmaxcol=2048
@@ -463,6 +463,7 @@ augroup Binary
   au BufNewFile,BufRead   *.m set filetype=matlab
   au BufNewFile,BufRead *.inc set filetype=make
   au BufNewFile,BufRead *.dat set filetype=perl 
+  au BufNewFile,BufRead *.t   set filetype=perl 
   au BufNewFile,BufRead zirconQA set fdm=marker
   " au BufNewFile,BufRead *.txt colorscheme slate 
 augroup END
@@ -533,8 +534,8 @@ let perl_want_scope_in_variables = 1
 " let perl_fold_blocks = 1
 
 autocmd Filetype perl :set equalprg=perltidy\ -i=2\ -nt\ -msc=2\ -ci=2\ -dsm\ -asc\ -lp\ -l=110\ -isbc\ -dws\ -w
-nmap <silent> ,p ggO#!/usr/intel/pkgs/perl/5.8.5/bin/perl<CR><CR>use strict;<CR>use warnings;<CR><CR><ESC><C-V>4kx6Gdd:w<CR>:!chmod 755 %<CR>:e<CR>
-" nmap <silent> ,p ggO#!/usr/intel/pkgs/perl/5.14.1/bin/perl<CR><CR>use strict;<CR>use warnings;<CR><CR><ESC><C-V>4kx6Gdd:w<CR>:!chmod u+x %<CR>:e<CR>
+" nmap <silent> ,p ggO#!/usr/intel/pkgs/perl/5.8.5/bin/perl<CR><CR>use strict;<CR>use warnings;<CR><CR><ESC><C-V>4kx6Gdd:w<CR>:!chmod u+x %:p<CR>:e<CR>
+nmap <silent> ,p ggO#!/usr/intel/pkgs/perl/5.14.1/bin/perl<CR><CR>use strict;<CR>use warnings;<CR><CR><ESC><C-V>4kx6Gdd:w<CR>:!chmod u+x %:p<CR>:e<CR>
 
 " folding stuff
 inoremap <F9> <C-O>za
