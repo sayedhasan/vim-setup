@@ -8,7 +8,9 @@
 
 " source $HOME/.vim/bundle/vim-exvim/vimrc_ex
 
-" Get pathogen up and running
+"+-------------------------------------------------------------+
+"| Get pathogen up and running                                 |
+"+-------------------------------------------------------------+
 filetype off 
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
@@ -31,48 +33,65 @@ filetype on
 filetype plugin on
 filetype indent on
 
-" Tabstops are 4 spaces
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set expandtab
-set autoindent
-set backspace=2  " Allow backspacing over indent, eol, and the start of an insert
-" set backspace=eol,start,indent
-set printoptions=header:0,duplex:long,paper:letter  " Printing options
-set wrapscan  " set the search scan to wrap lines
-set noignorecase
-set shellslash
-set vb  " set visual bell -- do not wring it
-set hidden  " allow unsaved buffer
+" Tabstops and backspace related settings
+" --------------------------------------------
+set tabstop=2                  " number of columns to shift for displaying <<TAB>>
+set shiftwidth=2               " number of columns to shift in auto-indent mode << or >>
+set softtabstop=2              " number of columns to shift in INSERT mode when hit <TAB>
+set expandtab                  " expands tabs to spaces
+set autoindent                 " copy indentation from the previous line ("stupid indent") 
+set backspace=eol,start,indent " allow backspacing over indent, eol, and the start of an insert
+
+" Buffer related options
+" --------------------------------------------
+set autoread                   " auto-loads a buffer when changed on disc
+set wrapscan                   " set the search scan to wrap lines
+set hidden                     " allow unsaved buffer
+set lazyredraw                 " Don't update the display while executing macros
+set textwidth=120              " Text width before wrapping lines
+set clipboard+=unnamed         " To use system clipboard
+set encoding=utf8              " utf8 encoding, needed to show NERDTree properly
+set ffs=unix,dos,mac           " EOF terminator type
+set autochdir                  " Vim will change CWD automatically to the file opened
+set number                     " shows line-number
+
+" Status line and other file info related stuff
+" --------------------------------------------
 set stl=%f\ %m\ %r%{fugitive#statusline()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]
-set laststatus=2  " tell VIM to always put a status line in, even if there is only one window
-set lazyredraw  " Don't update the display while executing macros
-set showcmd
-set showmode
-set mousehide  " Hide the mouse pointer while typing
-set showmatch  " Show the matching parentheses
-" set guioptions=acg
-set timeoutlen=500
-set history=100
+set laststatus=2               " tell VIM to always put a status line in, even if there is only one window
+set showcmd                    " shows last command at status line
+set showmode                   " shows mode
+
+" Search related settings
+" --------------------------------------------
+set showmatch                  " show the matching parentheses
+set hlsearch                   " highlight match
+set incsearch                  " incremental highlight of match
+set noignorecase               " case sensitive search
+
+" GUI related things
+" --------------------------------------------
+set mousehide                  " Hide the mouse pointer while typing
+set guioptions=acg             " Hide gui menu
+set timeoutlen=500             " Some stuf I inheritted
+
+" Auto-complete stuff
+" --------------------------------------------
+set history=100                " Command-line history
+set wildmenu                   " command line auto-completion
+set complete=.,w,b,t           " insert mode auto-completion
+set showfulltag                " insert mode auto-completion with tag
+
+" Misc. settings
+" --------------------------------------------
+set printoptions=header:0,duplex:long,paper:letter  " Printing options
 set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
-set timeoutlen=500
-set wildmenu
-set complete=.,w,b,t
-set showfulltag
-set textwidth=120
-set fillchars = ""
-set hlsearch
-set incsearch
-set clipboard+=unnamed
-set autoread
-set grepprg=grep\ -nH\ $*
-set diffopt+=iwhite
-set number
-set encoding=utf8
-set autochdir
-set ffs=unix,dos,mac
-set magic    " magic regular expression
+set shellslash                 " use windows/unix type slash for appropriate system
+set vb                         " set visual bell -- do not wring it
+set fillchars = ""             " something I don't understand
+set grepprg=grep\ -nH\ $*      " grep option
+set diffopt+=iwhite            " diff opeion
+set magic                      " magic regular expression
 
 
 " Switch on syntax highlighting.
@@ -193,6 +212,7 @@ set synmaxcol=2048
 " Initial path seeding
 set path=
 set tags=
+set tags+=~/.ptags
 
 "-----------------------------------------------------------------------------
 " NERD Tree Plugin Settings
@@ -252,7 +272,7 @@ nmap <silent> ,fp :CommandT ~/primal/platform<cr>
 "-----------------------------------------------------------------------------
 " Gundo Settings
 "-----------------------------------------------------------------------------
-nmap <c-F5> :GundoToggle<cr>
+nmap <C-F5> :GundoToggle<CR>
 
 
 " -----------------------------------------------------------------------------
@@ -553,3 +573,5 @@ nmap <silent> <C-S-F7> :colorscheme default<CR>
 nmap <silent> <C-S-F2> :colorscheme slate<CR>
 nmap <silent> <C-S-F4> :colorscheme xoria256<CR>
 nmap <silent> <C-S-F6> :colorscheme mustang<CR>
+
+map <silent> <F1> "zyiw:he <C-R>"<CR>
