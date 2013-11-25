@@ -50,7 +50,7 @@ set hidden                     " allow unsaved buffer
 set lazyredraw                 " Don't update the display while executing macros
 set textwidth=120              " Text width before wrapping lines
 set clipboard+=unnamed         " To use system clipboard
-set encoding=utf8              " utf8 encoding, needed to show NERDTree properly
+" set encoding=utf8              " utf8 encoding, needed to show NERDTree properly
 set ffs=unix,dos,mac           " EOF terminator type
 set autochdir                  " Vim will change CWD automatically to the file opened
 set number                     " shows line-number
@@ -484,6 +484,7 @@ augroup Binary
   au BufNewFile,BufRead *.inc set filetype=make
   au BufNewFile,BufRead *.dat set filetype=perl 
   au BufNewFile,BufRead *.t   set filetype=perl 
+  au BufNewFile,BufRead *.newrule   set filetype=perl 
   au BufNewFile,BufRead zirconQA set fdm=marker
   " au BufNewFile,BufRead *.txt colorscheme slate 
 augroup END
