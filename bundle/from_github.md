@@ -23,3 +23,5 @@
 * **Ctrlp**:              `git clone http://github.com/kien/ctrlp.vim.git vim-ctrlp`
 * **SnipMate**:           `git clone http://github.com/msanders/snipmate.vim.git vim-snipmate`
 * **Emmet**:              `git clone http://github.com/mattn/emmet-vim vim-emmet`
+* **PhpFold**:            `git clone http://github.com/rayburgemeestre/phpfolding.vim.git vim-phpfolding`
+* **Syntastic**:          `git clone http://github.com/scrooloose/syntastic.git vim-syntastic`
