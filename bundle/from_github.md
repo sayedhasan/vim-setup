@@ -22,3 +22,4 @@
 * **Surround**:           `git clone http://github.com/tpope/vim-surround.git vim-surround`
 * **Ctrlp**:              `git clone http://github.com/kien/ctrlp.vim.git vim-ctrlp`
 * **SnipMate**:           `git clone http://github.com/msanders/snipmate.vim.git vim-snipmate`
+* **Emmet**:              `git clone http://github.com/mattn/emmet-vim vim-emmet`
