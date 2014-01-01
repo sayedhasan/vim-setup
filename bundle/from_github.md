@@ -1,6 +1,7 @@
 # Stuff pulled from GitHub
 
 * **TComment**:           `git clone http://github.com/tomtom/tcomment_vim.git vim-tcomment`
+* **CommandT**:           `git clone http://github.com/wincent/Command-T.git vim-commandt`
 * **Tagbar**:             `git clone http://github.com/majutsushi/tagbar.git vim-tagbar`
 * **Bufkill**:            `git clone http://github.com/vim-scripts/bufkill.vim.git vim-bufkill`
 * **VimGit**:             `git clone http://github.com/tpope/vim-git.git vim-git`
